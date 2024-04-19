@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "colleague-care-961e7": {
+      "hosting": {
+        "cc": [
+          "colleague-care-961e7"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "colleague-care-961e7"
+  }
+}
