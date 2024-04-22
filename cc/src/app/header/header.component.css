@@ -1,0 +1,27 @@
+/* Styles for desktop */
+@media (min-width: 768px) {
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb( 81, 142, 85);
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+img{
+    height: 70px;
+}
+.buttons{
+    width: 200px;
+
+}
+}
+
+/* Styles for mobile */
+@media (max-width: 767px) {
+
+}
