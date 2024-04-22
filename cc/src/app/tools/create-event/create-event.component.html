@@ -1,0 +1,18 @@
+<form #createEventForm="ngForm" autocomplete="off">
+    <div>
+    <label for="name">Name of event:</label>
+    <input type="text" id="name" name="name" ngModel>
+    </div>
+    <div>
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" ngModel>
+    </div>
+    <div>
+        <label for="date">Date:</label>
+        <input type="datetime-local" id="date" name="date" ngModel>
+    </div>
+    <div>
+        <button (click)="submitForm()">Submit</button>
+    </div>
+  </form>
+  

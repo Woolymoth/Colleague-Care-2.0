@@ -1,0 +1,22 @@
+<form #createUserForm="ngForm" autocomplete="off">
+    <div>
+    <label for="first_name">First name:</label>
+    <input type="text" id="first_name" name="first_name" ngModel>
+    </div>
+    <div>
+      <label for="last_name">Last name:</label>
+      <input type="text" id="last_name" name="last_name" ngModel>
+    </div>
+    <div>
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" name="email" ngModel>
+    </div>
+    <div>
+        <label for="date_of_birth">Date of birth:</label>
+        <input type="date" id="date_of_birth" name="date_of_birth" ngModel>
+    </div>
+    <div>
+        <button (click)="submitForm()">Submit</button>
+    </div>
+  </form>
+  

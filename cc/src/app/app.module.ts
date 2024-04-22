@@ -4,15 +4,31 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateChoreComponent } from './create-chore/create-chore.component';
+import { CreateChoreComponent } from './tools/create-chore/create-chore.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { HeaderComponent } from './header/header.component';
+import { FirstPageComponent } from './pages/first-page/first-page.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { DisplayPageComponent } from './pages/display-page/display-page.component';
+import { FormPageComponent } from './pages/form-page/form-page.component';
+import { FooterComponent } from './footer/footer.component';
+import { CreateEventComponent } from './tools/create-event/create-event.component';
+import { RegisterUserComponent } from './tools/register-user/register-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateChoreComponent
+    CreateChoreComponent,
+    HeaderComponent,
+    FirstPageComponent,
+    LoginPageComponent,
+    DisplayPageComponent,
+    FormPageComponent,
+    FooterComponent,
+    CreateEventComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,
