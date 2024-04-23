@@ -5,7 +5,10 @@
     </div>
     <img src="../../assets/images/CC.jpg" alt="cc"/>
     <div class="buttons">
-        <button>Login</button>
-        <button>Agendas</button>
+        <button (click)="navigateToLogin()">Login</button>
+        <button (click)="navigateToDisplay()">Agendas</button>
     </div>
+</div>
+<div class="weekDisplay">
+<app-week-display></app-week-display>
 </div>

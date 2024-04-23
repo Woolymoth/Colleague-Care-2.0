@@ -1,0 +1,38 @@
+.home{
+    background-image: url(teamwork-3213924_1280.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.text{
+    transition: ease-out 1s;
+    width: 700px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+}
+.text:hover{
+    transition: ease-in 1s;
+    width: 700px;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 30px;
+}
+p{
+    color: white;
+    font-size: larger;
+    text-align: center;
+    margin: 50px;
+}
+h1{
+    color: white;
+    text-align: center;
+    margin: 50px;
+}

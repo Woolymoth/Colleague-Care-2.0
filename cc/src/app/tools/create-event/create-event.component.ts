@@ -19,7 +19,8 @@ export class CreateEventComponent {
       addDoc(acollection,{
         'name' : this.eventForm.value.name,
         'description' : this.eventForm.value.description,
-        'date' : this.eventForm.value.date
+        'date' : this.eventForm.value.date,
+        'time' : this.eventForm.value.time,
       });
     }
     resetForm():void{
@@ -27,6 +28,7 @@ export class CreateEventComponent {
         'name':'',
         'description':'',
         'date': '',
+        'time': '',
       })
     }
     submitForm():void{

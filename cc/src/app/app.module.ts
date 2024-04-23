@@ -16,6 +16,9 @@ import { FormPageComponent } from './pages/form-page/form-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { CreateEventComponent } from './tools/create-event/create-event.component';
 import { RegisterUserComponent } from './tools/register-user/register-user.component';
+import { WeekDisplayComponent } from './tools/week-display/week-display.component';
+import { ChedualCreatorComponent } from './tools/chedual-creator/chedual-creator.component';
+import { FetchEventsComponent } from './tools/fetch-events/fetch-events.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { RegisterUserComponent } from './tools/register-user/register-user.compo
     FormPageComponent,
     FooterComponent,
     CreateEventComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    WeekDisplayComponent,
+    ChedualCreatorComponent,
+    FetchEventsComponent
   ],
   imports: [
     BrowserModule,

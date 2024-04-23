@@ -1,0 +1,7 @@
+<div *ngFor="let event of events$ | async">
+    <h3>{{event.name}}</h3>
+    <p>{{event.description}}</p>
+    <p>{{event.date}}</p>
+    <p>{{event.time}}</p>
+</div>
+<app-create-event></app-create-event>
