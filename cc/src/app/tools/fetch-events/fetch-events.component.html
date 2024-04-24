@@ -1,7 +1,15 @@
-<div *ngFor="let event of events$ | async">
-    <h3>{{event.name}}</h3>
-    <p>{{event.description}}</p>
-    <p>{{event.date}}</p>
-    <p>{{event.time}}</p>
-</div>
+<div class="displayTable">
+    <div class="tableContent" *ngFor="let event of getDisplayedEvents()" (click)="toggleDetails(event)">
+      <h3>{{event.name}}</h3>
+      <p>{{event.date}}</p>
+      <div *ngIf="event.expanded">
+        <p>{{event.description}}</p>
+        <p>{{event.time}} o'clock</p>
+      </div>
+    </div>
+    <div class="pagination">
+        <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
+        <button (click)="nextPage()" [disabled]="currentPage === (sortedEvents.length / pageSize - 1)">Next</button>
+      </div>
+  </div>
 <app-create-event></app-create-event>
