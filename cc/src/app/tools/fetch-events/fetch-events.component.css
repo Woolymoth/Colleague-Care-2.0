@@ -23,9 +23,21 @@
   .eventDetails {
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.3s ease;
   }
   
   .eventDetails.open {
     max-height: 200px; 
   }
+  .event-today-box{
+    
+}
+  
+  .event-exists {
+    /* Styles when an event exists */
+  }
+  
+  .no-event {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/1920px-Flag_of_Sweden.svg.png);  
+  }
+  

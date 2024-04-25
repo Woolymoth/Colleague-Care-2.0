@@ -15,9 +15,12 @@ export class FetchEventsComponent implements OnInit {
 
   constructor(private readonly firestore: Firestore) {}
 
+  eventToday: Events | null = null;
+
   ngOnInit(): void {
     this.events$.subscribe(events => {
       this.sortedEvents = this.sortEventsByDate(events);
+      this.updateEventToday();
     });
   }
 
@@ -53,6 +56,14 @@ export class FetchEventsComponent implements OnInit {
   getDisplayedEvents(): Events[] {
     const startIndex = this.currentPage * this.pageSize;
     return this.sortedEvents.slice(startIndex, startIndex + this.pageSize);
+  }
+  //this checks if an event corelates with todays date, if so, it is diplayed at the top of the ui
+  updateEventToday(): void {
+    const currentDate = new Date();
+    this.eventToday = this.sortedEvents.find(event => {
+      const eventDate = new Date(event.date);
+      return eventDate.toDateString() === currentDate.toDateString();
+    }) || null;
   }
 }
 

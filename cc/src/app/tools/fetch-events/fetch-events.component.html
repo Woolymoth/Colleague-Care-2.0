@@ -1,3 +1,14 @@
+<div class="event-today-box" [ngClass]="{ 'event-exists': eventToday, 'no-event': !eventToday }">
+    <ng-container *ngIf="eventToday; else noEventToday">
+      <h2>Event Today:</h2>
+      <p>{{ eventToday.name }}</p>
+      <p>{{ eventToday.description }}</p>
+      <p>{{ eventToday.date }}</p>
+    </ng-container>
+    <ng-template #noEventToday>
+      <h2>No event today</h2>
+    </ng-template>
+  </div>
 <div class="displayTable">
     <div class="tableContent" *ngFor="let event of getDisplayedEvents()" (click)="toggleDetails(event)">
       <h3>{{event.name}}</h3>

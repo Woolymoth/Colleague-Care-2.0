@@ -21,7 +21,7 @@ img{
     width: 300px;
     display: flex;
     flex-direction: row-reverse;
-    align-items: end;
+    align-items: center;
     justify-content: space-around;
     margin-left: 100px;
     margin-right: 175px;
@@ -36,12 +36,13 @@ button{
     transition:  border-color 1s ease-out;
 }
 button:hover{
-    transition: 0.4s ease-in;
+    transition: 0.3s ease-in;
     border-color: white;
-    background-color: white;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    color:  rgb( 81, 142, 85);
+    /*background-color: white;*/
+    /*border-top-left-radius: 10px;*/
+    /*border-top-right-radius: 10px;*/
+    /*border-radius: 10px;*/
+    color:  whitesmoke;
 }
 .weekDisplay{
     width: 100%;
