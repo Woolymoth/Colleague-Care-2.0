@@ -7,6 +7,7 @@ import { collection, collectionData, addDoc, query, where, getDocs, Firestore } 
   styleUrls: ['./chedual-creator.component.css']
 })
 export class ChedualCreatorComponent {
+  schedule: any[] = [];
 
   constructor(private readonly firestore: Firestore) {
     this.createSchedule();
@@ -32,6 +33,16 @@ export class ChedualCreatorComponent {
         await this.saveSchedule(choreSchedule);
       }
     }
+
+    await this.fetchSchedule();
+  }
+
+  async fetchSchedule(): Promise<void> {
+    const currentWeek = this.getWeekNumber(new Date());
+    const scheduleRef = collection(this.firestore, 'schedule');
+    const q = query(scheduleRef, where("weekNumber", "==", currentWeek));
+    const querySnapshot = await getDocs(q);
+    this.schedule = querySnapshot.docs.map(doc => doc.data());
   }
 
   async getExistingSchedule(chore: any, currentWeek: number): Promise<any> {
@@ -74,7 +85,8 @@ export class ChedualCreatorComponent {
   getWeekNumber(date: Date): number {
     const startOfYear = new Date(date.getFullYear(), 0, 1);
     const numberOfDays = Math.floor((date.getTime() - startOfYear.getTime()) / (24 * 3600 * 1000));
-    return Math.ceil((date.getDay() + 1 + numberOfDays) / 7);
+    const correctedDay = date.getDay() === 0 ? 7 : date.getDay(); // Adjusting Sunday to 7
+    return Math.ceil((correctedDay + numberOfDays) / 7);
   }
 
   shuffleArray(array: any[]): any[] {
@@ -83,5 +95,9 @@ export class ChedualCreatorComponent {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  }
+
+  toggleDetails(event: any): void {
+    event.expanded = !event.expanded;
   }
 }

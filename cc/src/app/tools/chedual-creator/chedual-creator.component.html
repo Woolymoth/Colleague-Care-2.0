@@ -1,1 +1,12 @@
-<p>chedual-creator works!</p>
+<div class="headCard">
+<h2>Chores asigned this week.</h2>
+</div>
+<div class="displayTable">
+    <div class="tableContent" *ngFor="let event of schedule" (click)="toggleDetails(event)">
+      <h3>{{event.chore.chore_name}}</h3>
+      <p>{{event.colleague.first_name}}</p>
+      <div *ngIf="event.expanded">
+        <p class="important">{{event.chore.description}}</p>
+      </div>
+    </div>
+  </div>

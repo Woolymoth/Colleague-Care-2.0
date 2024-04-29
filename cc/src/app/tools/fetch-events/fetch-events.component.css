@@ -10,12 +10,13 @@
     border-bottom-right-radius: 20px;
 }
 .tableContent{
-    background-color: white;
-    border: solid 2px #E1E1E1;
-    width: 350px;
-    border-radius: 30px;
-    padding-left: 40px;
-    margin: 10px;
+  background-color: white;
+  border: solid 2px #E1E1E1;
+  width: 350px;
+  border-radius: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 10px;
 }
 .tableContent:hover {
     background-color: #f9f9f9;

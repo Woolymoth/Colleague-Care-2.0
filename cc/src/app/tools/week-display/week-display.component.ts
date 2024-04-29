@@ -15,8 +15,9 @@ export class WeekDisplayComponent implements OnInit {
   }
 
   getWeekNumber(date: Date): number {
-    const firstDayOfYear = new Date(date.getFullYear(), 0, 1);
-    const pastDaysOfYear = (date.getTime() - firstDayOfYear.getTime()) / 86400000;
-    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
-  }
+    const startOfYear = new Date(date.getFullYear(), 0, 1);
+    const numberOfDays = Math.floor((date.getTime() - startOfYear.getTime()) / (24 * 3600 * 1000));
+    const correctedDay = date.getDay() === 0 ? 7 : date.getDay(); // Adjusting Sunday to 7
+    return Math.ceil((correctedDay + numberOfDays) / 7);
+}
 }

@@ -1,1 +1,12 @@
-<p>login-page works!</p>
+<div>
+    <h2>Login</h2>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="email" />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" />
+    </div>
+    <button (click)="login()">Login</button>
+  </div>

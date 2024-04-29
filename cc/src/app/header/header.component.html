@@ -1,14 +1,14 @@
 <div class="header">
     <div class="buttons">
-        <div class="filler"></div>
-        <div class="filler"></div>
+      <div class="filler"></div>
+      <div class="filler"></div>
     </div>
     <img src="../../assets/images/CC.jpg" alt="cc"/>
     <div class="buttons">
-        <button (click)="navigateToLogin()">Login</button>
-        <button (click)="navigateToDisplay()">Agendas</button>
+      <button (click)="navigateToLoginOrLogout()">{{ isLoggedIn ? 'Logout' : 'Login' }}</button>
+      <button *ngIf="isLoggedIn" (click)="navigateToForm()">Create Agendas</button>
     </div>
-</div>
-<div class="weekDisplay">
-<app-week-display></app-week-display>
-</div>
+  </div>
+  <div class="weekDisplay">
+    <app-week-display></app-week-display>
+  </div>
