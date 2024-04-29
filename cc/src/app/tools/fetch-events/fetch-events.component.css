@@ -6,7 +6,8 @@
     align-items: center;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 .tableContent{
     background-color: white;
@@ -14,7 +15,7 @@
     width: 350px;
     border-radius: 30px;
     padding-left: 40px;
-    margin: 20px;
+    margin: 10px;
 }
 .tableContent:hover {
     background-color: #f9f9f9;
@@ -24,20 +25,41 @@
     overflow: hidden;
     max-height: 0;
     transition: max-height 0.3s ease;
+    
   }
   
   .eventDetails.open {
     max-height: 200px; 
+    min-height: 75px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    
   }
   .event-today-box{
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
   
   .event-exists {
-    /* Styles when an event exists */
+   background-color: #81FBB8;
+   border-top-left-radius: 20px;
+   border-top-right-radius: 20px;
+   display: flex;
+   flex-direction: column;
+  }
+  .event-exists p{
+    margin: 2px;
+  }
+  .event-exists h2{
+    margin-top: 2px;
+    margin-bottom: 0px;
   }
   
   .no-event {
-    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Flag_of_Sweden.svg/1920px-Flag_of_Sweden.svg.png);  
+    background-color: #89ABB4;  
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   

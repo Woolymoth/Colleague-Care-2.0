@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, addDoc, query, where, getDocs, Firestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-chedual-creator',
@@ -9,68 +9,75 @@ import { collection, collectionData, Firestore } from '@angular/fire/firestore';
 export class ChedualCreatorComponent {
 
   constructor(private readonly firestore: Firestore) {
-    this.fetchColleagues();
-    this.fetchChores();
     this.createSchedule();
   }
 
-  fetchColleagues(): void {
-    const colleaguesRef = collection(this.firestore, 'colleagues');
-    collectionData(colleaguesRef).subscribe(colleagues => {
-      // Do whatever you want with the fetched colleagues here
-      console.log("Colleagues:", colleagues);
-    });
-  }
-
-  fetchChores(): void {
+  async createSchedule(): Promise<void> {
     const choresRef = collection(this.firestore, 'chores');
-    collectionData(choresRef).subscribe(chores => {
-      // Do whatever you want with the fetched chores here
-      console.log("Chores:", chores);
-    });
-  }
-
-  createSchedule(): void {
     const colleaguesRef = collection(this.firestore, 'colleagues');
-    collectionData(colleaguesRef).subscribe(colleagues => {
-      const choresRef = collection(this.firestore, 'chores');
-      collectionData(choresRef).subscribe(chores => {
-        const numWeeks = colleagues.length;
-        const startOfWeek = this.getStartOfWeek();
 
-        chores.forEach(chore => {
-          const choreSchedule = [];
-          const shuffledColleagues = this.shuffleArray(colleagues);
+    const choreDocs = await getDocs(choresRef);
+    const choreData = choreDocs.docs.map(doc => doc.data());
 
-          for (let i = 0; i < numWeeks; i++) {
-            const weekNumber = startOfWeek + i;
-            const colleagueIndex = i % shuffledColleagues.length;
-            const colleague = shuffledColleagues[colleagueIndex];
-            const week = {
-              weekNumber: weekNumber,
-              colleague: colleague,
-              chore: chore
-            };
-            choreSchedule.push(week);
-          }
+    const colleagueDocs = await getDocs(colleaguesRef);
+    const colleagueData = colleagueDocs.docs.map(doc => doc.data());
 
-          console.log("Chore Schedule for", chore['chore_name'], ":", choreSchedule);
-        });
-      });
-    });
+    const currentWeek = this.getWeekNumber(new Date());
+
+    for (const chore of choreData) {
+      const existingSchedule = await this.getExistingSchedule(chore, currentWeek);
+      if (!existingSchedule) {
+        const shuffledColleagues = this.shuffleArray(colleagueData);
+        const choreSchedule = this.generateChoreSchedule(shuffledColleagues, currentWeek, chore);
+        await this.saveSchedule(choreSchedule);
+      }
+    }
   }
 
-  getStartOfWeek(): number {
-    const today = new Date();
-    const startOfWeek = new Date(today.getFullYear(), 0, 1);
-    const todayNumber = today.getTime();
-    const startOfWeekNumber = startOfWeek.getTime();
-    const weekNumber = Math.ceil((((todayNumber - startOfWeekNumber) / 86400000) + startOfWeek.getDay() + 1) / 7);
-    return weekNumber;
+  async getExistingSchedule(chore: any, currentWeek: number): Promise<any> {
+    const scheduleRef = collection(this.firestore, 'schedule');
+    const q = query(scheduleRef, 
+                    where("chore.chore_name", "==", chore.chore_name),
+                    where("weekNumber", "==", currentWeek));
+    const querySnapshot = await getDocs(q);
+    return !querySnapshot.empty;
+  }
+
+  async saveSchedule(schedule: any[]): Promise<void> {
+    const scheduleRef = collection(this.firestore, 'schedule');
+
+    for (const week of schedule) {
+      try {
+        await addDoc(scheduleRef, week);
+      } catch (e) {
+        console.error('Error adding document: ', e);
+      }
+    }
+  }
+
+  generateChoreSchedule(colleagues: any[], currentWeek: number, chore: any): any[] {
+    const choreSchedule = [];
+    for (let i = 0; i < colleagues.length; i++) {
+      const weekNumber = currentWeek + i;
+      const colleagueIndex = i % colleagues.length;
+      const colleague = colleagues[colleagueIndex];
+      const week = {
+        weekNumber: weekNumber,
+        colleague: colleague,
+        chore: chore
+      };
+      choreSchedule.push(week);
+    }
+    return choreSchedule;
+  }
+
+  getWeekNumber(date: Date): number {
+    const startOfYear = new Date(date.getFullYear(), 0, 1);
+    const numberOfDays = Math.floor((date.getTime() - startOfYear.getTime()) / (24 * 3600 * 1000));
+    return Math.ceil((date.getDay() + 1 + numberOfDays) / 7);
   }
 
   shuffleArray(array: any[]): any[] {
-    // Fisher-Yates shuffle algorithm
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [array[i], array[j]] = [array[j], array[i]];
