@@ -2,7 +2,6 @@
     <ng-container *ngIf="eventToday; else noEventToday">
       <h2>Today it's time for:</h2>
       <p>{{ eventToday.name }}</p>
-      <p>{{ eventToday.description }}</p>
     </ng-container>
     <ng-template #noEventToday>
       <h2>No event today :(</h2>
@@ -18,8 +17,8 @@
       </div>
     </div>
     <div class="pagination">
-        <button (click)="prevPage()" [disabled]="currentPage === 0">Previous</button>
-        <button (click)="nextPage()" [disabled]="currentPage === (sortedEvents.length / pageSize - 1)">Next</button>
+        <button class="prevPage"(click)="prevPage()" [disabled]="currentPage === 0">Prev</button>
+        <button class="nextPage" (click)="nextPage()" [disabled]="currentPage === (sortedEvents.length / pageSize - 1)">Next</button>
       </div>
   </div>
 <app-create-event></app-create-event>

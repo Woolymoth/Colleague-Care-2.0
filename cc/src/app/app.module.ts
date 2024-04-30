@@ -22,6 +22,8 @@ import { RegisterUserComponent } from './tools/register-user/register-user.compo
 import { WeekDisplayComponent } from './tools/week-display/week-display.component';
 import { ChedualCreatorComponent } from './tools/chedual-creator/chedual-creator.component';
 import { FetchEventsComponent } from './tools/fetch-events/fetch-events.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {MatSnackBarModule} from '@angular/material/snack-bar'
 
 
 const firebaseConfig = {
@@ -56,12 +58,14 @@ const firebaseConfig = {
     AngularFirestoreModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
+    MatSnackBarModule,
     provideFirebaseApp(() => initializeApp(firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    provideAnimationsAsync('noop')
   ],
   bootstrap: [AppComponent]
 })

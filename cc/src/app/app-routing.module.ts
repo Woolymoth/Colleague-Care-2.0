@@ -4,6 +4,7 @@ import { FirstPageComponent } from './pages/first-page/first-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { FormPageComponent } from './pages/form-page/form-page.component';
 import { DisplayPageComponent } from './pages/display-page/display-page.component';
+import { AuthGuard } from './tools/auth-guard';
 
 const routes: Routes = [
   {
@@ -16,11 +17,13 @@ const routes: Routes = [
   },
   {
     path: "form",
-    component: FormPageComponent
+    component: FormPageComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: "display",
-    component: DisplayPageComponent
+    component: DisplayPageComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

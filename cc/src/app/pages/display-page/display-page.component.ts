@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-display-page',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './display-page.component.css'
 })
 export class DisplayPageComponent {
+  constructor(private renderer: Renderer2) { }
+  ngOnInit() {
+    this.renderer.setStyle(document.body, 'background', 'white');
 
+  }
+  
 }

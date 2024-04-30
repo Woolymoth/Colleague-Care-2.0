@@ -41,6 +41,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
+    height: 70px;
 }
   
   .event-exists {
@@ -63,4 +64,31 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
   }
+  .pagination{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  button{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 10px;
+    height: 30px;
+    background-color: white;
+    border: solid 1px rgb(99, 99, 99);
+    transition: border-color 0.3s ease; 
+    font-size: medium;
+  }
+  button:hover{
+    border-color: #E1E1E1;
+  }
+  .prevPage{
+    border-bottom-left-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+  .nextPage{
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+
   

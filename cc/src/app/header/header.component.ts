@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../tools/auth';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-header',
@@ -24,7 +25,9 @@ export class HeaderComponent implements OnInit {
 
   navigateToLoginOrLogout() {
     if (this.isLoggedIn) {
-      this.authService.logout(); // Call logout method from AuthService
+      this.authService.logout().then(() => {
+        this.router.navigate(['']); 
+      });
     } else {
       this.router.navigate(['/login']);
     }
