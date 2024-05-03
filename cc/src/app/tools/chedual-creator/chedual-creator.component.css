@@ -1,3 +1,4 @@
+@media (min-width: 768px) {
 .displayTable{
     background-color: #F5F9FA ;
     width: 500px;
@@ -22,7 +23,7 @@
     background-color: #f9f9f9;
   }
 .headCard{
-    background-color: black;  
+    background-color: #89ABB4;  
     color: white;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -32,5 +33,43 @@
 }
 .important{
     background-color: rgb(242, 255, 171);
+}
+}
+@media (max-width: 767px) {
+.displayTable{
+    background-color: #F5F9FA ;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+.tableContent{
+    background-color: white;
+    border: solid 2px #E1E1E1;
+    width: 250px;
+    border-radius: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 10px;
+}
+.tableContent:hover {
+    background-color: #f9f9f9;
+  }
+.headCard{
+    background-color: #89ABB4;  
+    color: black;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.important{
+    background-color: rgb(242, 255, 171);
+}
 }
 

@@ -1,0 +1,8 @@
+<div class="toggle-buttons">
+  <button class="chore" [class.shaded-chore]="createChoreVisible" (click)="showCreateChore()">Create Chore</button>
+  <button class="event" [class.shaded-event]="createEventVisible" (click)="showCreateEvent()">Create Event</button>
+</div>
+  <div class="display-content">
+    <app-create-chore *ngIf="createChoreVisible"></app-create-chore>
+    <app-create-event *ngIf="createEventVisible"></app-create-event>
+  </div>

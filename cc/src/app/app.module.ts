@@ -23,7 +23,8 @@ import { WeekDisplayComponent } from './tools/week-display/week-display.componen
 import { ChedualCreatorComponent } from './tools/chedual-creator/chedual-creator.component';
 import { FetchEventsComponent } from './tools/fetch-events/fetch-events.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import {MatSnackBarModule} from '@angular/material/snack-bar'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DisplayCardComponent } from './tools/display-card/display-card.component'
 
 
 const firebaseConfig = {
@@ -49,7 +50,8 @@ const firebaseConfig = {
     RegisterUserComponent,
     WeekDisplayComponent,
     ChedualCreatorComponent,
-    FetchEventsComponent
+    FetchEventsComponent,
+    DisplayCardComponent
   ],
   imports: [
     BrowserModule,

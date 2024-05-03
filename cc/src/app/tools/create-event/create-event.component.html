@@ -1,19 +1,21 @@
-<form #createEventForm="ngForm" autocomplete="off">
-    <div>
+<form class="eventform" #createEventForm="ngForm" autocomplete="off">
+    <div class="textInput">
     <label for="name">Name of event:</label>
     <input type="text" id="name" name="name" ngModel>
     </div>
-    <div>
+    <div class="textInput">
       <label for="description">Description:</label>
-      <input type="text" id="description" name="description" ngModel>
+      <textarea id="description" name="description" ngModel></textarea>
     </div>
-    <div>
-        <label for="date">Date:</label>
-        <input type="date" id="date" name="date" ngModel>
-    </div>
-    <div>
-        <label for="time">Time:</label>
-        <input type="time" id="time" name="time" ngModel>
+    <div class="date-time">
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" ngModel>
+        </div>
+        <div>
+            <label for="time">Time:</label>
+            <input type="time" id="time" name="time" ngModel>
+        </div>
     </div>
     <div>
         <button (click)="submitForm()">Submit</button>
