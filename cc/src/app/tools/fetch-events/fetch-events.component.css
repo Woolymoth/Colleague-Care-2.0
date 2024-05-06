@@ -83,6 +83,21 @@
   button:hover{
     border-color: #E1E1E1;
   }
+  .editButton{
+    margin-bottom: 20px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-width: 3px;
+    background-color: transparent;
+  }
+  .deleteButton{
+    margin-top: 5px;
+    padding-top: 1px;
+    border: none;
+    background: none;
+  }
+
   .prevPage{
     border-bottom-left-radius: 20px;
     border-top-left-radius: 20px;
@@ -90,6 +105,9 @@
   .nextPage{
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
+  }
+  .important{
+    background-color: rgb(242, 255, 171);
   }
 
 }
@@ -189,5 +207,9 @@
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
   }
+  .important{
+    background-color: rgb(242, 255, 171);
+  }
+
 
 }

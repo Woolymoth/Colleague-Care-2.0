@@ -1,23 +1,28 @@
 <div class="event-today-box" [ngClass]="{ 'event-exists': eventToday, 'no-event': !eventToday }">
-    <ng-container *ngIf="eventToday; else noEventToday">
-      <h2>Today it's time for:</h2>
-      <p>{{ eventToday.name }}</p>
-    </ng-container>
-    <ng-template #noEventToday>
-      <h2>No event today :(</h2>
-    </ng-template>
-  </div>
+  <ng-container *ngIf="eventToday; else noEventToday">
+    <h2>Today it's time for:</h2>
+    <p>{{ eventToday.name }}</p>
+  </ng-container>
+  <ng-template #noEventToday>
+    <h2>No event today :(</h2>
+  </ng-template>
+</div>
+
 <div class="displayTable">
-    <div class="tableContent" *ngFor="let event of getDisplayedEvents()" (click)="toggleDetails(event)">
-      <h3>{{event.name}}</h3>
-      <p>{{event.date}}</p>
-      <div *ngIf="event.expanded">
-        <p>{{event.description}}</p>
-        <p>{{event.time}} o'clock</p>
-      </div>
+  <div class="tableContent" *ngFor="let event of getDisplayedEvents()" (click)="toggleDetails(event)">
+    <h3>{{event.name}}</h3>
+    <p>{{event.date}}</p>
+    <div *ngIf="event.expanded">
+      <p class="important">{{event.description}}</p>
+      <p>{{event.time}} o'clock</p>
+      <button class="editButton" (click)="editEvent(event)">Edit</button>
+      <button class="deleteButton" (click)="deleteEvent(event)">
+        <img src="../../../assets/bin.png" alt="Delete" style="width: 16px; height: 16px;">
+      </button>
     </div>
-    <div class="pagination">
-        <button class="prevPage"(click)="prevPage()" [disabled]="currentPage === 0">Prev</button>
-        <button class="nextPage" (click)="nextPage()" [disabled]="currentPage === (sortedEvents.length / pageSize - 1)">Next</button>
-      </div>
   </div>
+  <div class="pagination">
+    <button  class="prevPage" (click)="prevPage()" [disabled]="currentPage === 0">Prev</button>
+    <button  class="nextPage" (click)="nextPage()" [disabled]="currentPage === (sortedEvents.length / pageSize - 1)">Next</button>
+  </div>
+</div>

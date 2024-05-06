@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: center ;
+
 }
 h2{
     margin-top: 20px;
@@ -25,6 +26,23 @@ h2{
     color: white;
     transition: width 1s ease-in, background-color 1s ease-in;
 
+}
+.registration-table{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    color: white;
+    transition: width 1s ease-out, background-color 1s ease-out; 
+    margin-bottom: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.registration-table:hover{
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 30px;
+    color: white;
+    transition: width 1s ease-in, background-color 1s ease-in;
 }
 .input{
     display: flex;
@@ -50,6 +68,9 @@ input:hover{
     background-color: #f9f9f9;;
 }
 .login-button{
+    align-self: flex-end;
+}
+.registration-button{
     align-self: flex-end;
 }
 button{

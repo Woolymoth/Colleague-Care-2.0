@@ -1,3 +1,4 @@
+@media (min-width: 768px) {
 div{
     display: flex;
     flex-direction: column;
@@ -44,4 +45,57 @@ button{
 }
 button:hover{
     border-color: #E1E1E1;
+}
+}
+
+@media (max-width: 767px) {
+    div{
+        display: flex;
+        flex-direction: column;
+        color: black;
+        margin-left: 50px;
+        margin-top: 20px;
+    }
+    #chore_name{
+        width: 150px;
+        border-radius: 20px;
+        border: solid 2px #E1E1E1;
+        padding-left: 5px;
+        padding-right: 5px;
+        background-color: white ;
+        transition: background-color 0.3s ease ;
+    }
+    #chore_name:hover{
+        background-color: #f9f9f9;
+    }
+    #description{
+        height: 240px;
+        width: 225px;
+        border-radius: 20px;
+        border: solid 2px #E1E1E1;
+        padding-left: 5px;
+        padding-top: 10px;
+        padding-right: 5px;
+        background-color: white ;
+        transition: background-color 0.3s ease ;
+        resize: vertical;
+        overflow-y: auto;
+    }
+    #description:hover{
+        background-color: #f9f9f9;
+    }
+    button{
+        height: 25px;
+        width: 75px;
+        border-radius: 20px;
+        background-color: white;
+        border: solid 2px rgb(99, 99, 99);
+        transition: border-color 0.3s ease; 
+        font-size: medium;
+        margin-top: 5px;
+    }
+    button:hover{
+        border-color: #E1E1E1;
+    }
+
 }

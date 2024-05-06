@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { collection, collectionData, Firestore } from '@angular/fire/firestore';
+import { collection, collectionData, Firestore, deleteDoc, doc, query, where, updateDoc} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./fetch-events.component.css']
 })
 export class FetchEventsComponent implements OnInit {
-  events$ = collectionData(collection(this.firestore, 'events')) as Observable<Events[]>;
+  events$ = collectionData(collection(this.firestore, 'events'), { idField: 'id' }) as Observable<Events[]>;
   sortedEvents: Events[] = [];
   currentPage = 0;
   pageSize = 5;
@@ -57,7 +57,66 @@ export class FetchEventsComponent implements OnInit {
     const startIndex = this.currentPage * this.pageSize;
     return this.sortedEvents.slice(startIndex, startIndex + this.pageSize);
   }
-  //this checks if an event corelates with todays date, if so, it is diplayed at the top of the ui
+
+  deleteEvent(event: Events): void {
+    if (!event || !event.id) {
+      console.error('Invalid event:', event);
+      return;
+    }
+  
+    if (confirm('Are you sure you want to delete this event?')) {
+      const eventRef = doc(this.firestore, 'events', event.id);
+      deleteDoc(eventRef)
+        .then(() => {
+          console.log('Event deleted successfully.');
+          this.updateEventToday(); // Update eventToday after deletion
+        })
+        .catch(error => {
+          console.error('Error deleting event:', error);
+        });
+    }
+  }
+
+  editEvent(event: Events): void {
+    // Prompt the user to enter new values for name, description, date, and time
+    const newName = prompt('Enter new name:', event.name);
+    const newDescription = prompt('Enter new description:', event.description);
+    const newDate = prompt('Enter new date (YYYY-MM-DD):', event.date);
+    const newTime = prompt('Enter new time (HH:MM):', event.time);
+  
+    // If the user cancels or enters empty values, do nothing
+    if (newName === null || newDescription === null || newDate === null || newTime === null ||
+        newName === '' || newDescription === '' || newDate === '' || newTime === '') {
+      return;
+    }
+  
+    // Convert the new date string to Date format
+    const parsedDate = new Date(newDate);
+  
+    // Update the event data in Firestore
+    const eventRef = doc(this.firestore, 'events', event.id);
+    updateDoc(eventRef, {
+      name: newName,
+      description: newDescription,
+      date: parsedDate.toISOString().split('T')[0], // Convert date to ISO string format (YYYY-MM-DD)
+      time: newTime
+    })
+    .then(() => {
+      console.log('Event updated successfully.');
+      // Optionally, update the local events array if needed
+      const updatedEventIndex = this.sortedEvents.findIndex(e => e.id === event.id);
+      if (updatedEventIndex !== -1) {
+        this.sortedEvents[updatedEventIndex].name = newName;
+        this.sortedEvents[updatedEventIndex].description = newDescription;
+        this.sortedEvents[updatedEventIndex].date = parsedDate.toISOString().split('T')[0];
+        this.sortedEvents[updatedEventIndex].time = newTime;
+      }
+    })
+    .catch(error => {
+      console.error('Error updating event:', error);
+    });
+  }
+
   updateEventToday(): void {
     const currentDate = new Date();
     this.eventToday = this.sortedEvents.find(event => {

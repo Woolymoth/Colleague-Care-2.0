@@ -8,6 +8,10 @@ import { collection, collectionData, addDoc, query, where, getDocs, Firestore } 
 })
 export class ChedualCreatorComponent {
   schedule: any[] = [];
+  displayedSchedule: any[] = [];
+  currentPage = 0;
+  pageSize = 5;
+  maxPage = 0;
 
   constructor(private readonly firestore: Firestore) {
     this.createSchedule();
@@ -43,6 +47,8 @@ export class ChedualCreatorComponent {
     const q = query(scheduleRef, where("weekNumber", "==", currentWeek));
     const querySnapshot = await getDocs(q);
     this.schedule = querySnapshot.docs.map(doc => doc.data());
+    this.maxPage = Math.ceil(this.schedule.length / this.pageSize) - 1;
+    this.updateDisplayedSchedule();
   }
 
   async getExistingSchedule(chore: any, currentWeek: number): Promise<any> {
@@ -100,5 +106,24 @@ export class ChedualCreatorComponent {
 
   toggleDetails(event: any): void {
     event.expanded = !event.expanded;
+  }
+
+  nextPage(): void {
+    if (this.currentPage < this.maxPage) {
+      this.currentPage++;
+      this.updateDisplayedSchedule();
+    }
+  }
+
+  prevPage(): void {
+    if (this.currentPage > 0) {
+      this.currentPage--;
+      this.updateDisplayedSchedule();
+    }
+  }
+
+  updateDisplayedSchedule(): void {
+    const startIndex = this.currentPage * this.pageSize;
+    this.displayedSchedule = this.schedule.slice(startIndex, startIndex + this.pageSize);
   }
 }
