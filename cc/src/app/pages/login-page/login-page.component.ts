@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Component({
   selector: 'app-login-page',
@@ -10,16 +11,24 @@ import { Router } from '@angular/router';
 export class LoginPageComponent {
   email: string = '';
   password: string = '';
+  firstName: string = '';
+  lastName: string = '';
+  birthday: Date | null = null;
   showRegistrationForm: boolean = false;
 
-  constructor(private auth: AngularFireAuth, private router: Router) { }
+  constructor(
+    private auth: AngularFireAuth, 
+    private router: Router,
+    private firestore: AngularFirestore
+  ) { }
 
   async login() {
     try {
       const userCredential = await this.auth.signInWithEmailAndPassword(this.email, this.password);
       console.log('Logged in successfully!', userCredential.user);
-      // Redirect to the desired page after successful login
-      this.router.navigate(['/display']);
+      if (userCredential.user) {
+        this.router.navigate(['/display']);
+      }
     } catch (error) {
       alert('Login failed. Please check your credentials.');
       console.error('Login error:', error);
@@ -32,8 +41,16 @@ export class LoginPageComponent {
     try {
       const userCredential = await this.auth.createUserWithEmailAndPassword(this.email, this.password);
       console.log('Registered successfully!', userCredential.user);
-      // Redirect to the desired page after successful registration
-      this.router.navigate(['/display']);
+
+      if (userCredential.user) {
+        await this.firestore.collection('colleagues').doc(userCredential.user.uid).set({
+          email: this.email,
+          firstName: this.firstName,
+          lastName: this.lastName,
+          birthday: this.birthday
+        });
+        this.router.navigate(['/display']);
+      }
     } catch (error) {
       alert('Registration failed. Please try again.');
       console.error('Registration error:', error);
@@ -46,5 +63,8 @@ export class LoginPageComponent {
     this.showRegistrationForm = !this.showRegistrationForm;
     this.email = '';
     this.password = '';
+    this.firstName = '';
+    this.lastName = '';
+    this.birthday = null;
   }
 }

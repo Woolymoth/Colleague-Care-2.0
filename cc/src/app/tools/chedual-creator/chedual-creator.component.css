@@ -1,7 +1,7 @@
 @media (min-width: 768px) {
-.displayTable{
+  .displayTable{
     background-color: #F5F9FA ;
-    width: 500px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -11,13 +11,13 @@
     border-bottom-right-radius: 20px;
 }
 .tableContent{
-    background-color: white;
-    border: solid 2px #E1E1E1;
-    width: 350px;
-    border-radius: 30px;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin: 10px;
+  background-color: white;
+  border: solid 2px #E1E1E1;
+  width: 250px;
+  border-radius: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 10px;
 }
 .tableContent:hover {
     background-color: #f9f9f9;

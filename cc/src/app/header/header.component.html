@@ -2,11 +2,13 @@
     <div class="buttons">
       <div class="filler"></div>
       <div class="filler"></div>
+      <div class="filler"></div>
     </div>
     <img src="../../assets/images/CC.jpg" alt="cc"/>
     <div class="buttons">
       <button (click)="navigateToLoginOrLogout()">{{ isLoggedIn ? 'Logout' : 'Login' }}</button>
       <button *ngIf="isLoggedIn" (click)="navigateToForm()">Create Agendas</button>
+      <button *ngIf="isLoggedIn" (click)="navigateToDisplay()">Agendas</button>
     </div>
   </div>
   <div class="weekDisplay">

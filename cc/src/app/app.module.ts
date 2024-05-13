@@ -24,7 +24,8 @@ import { ChedualCreatorComponent } from './tools/chedual-creator/chedual-creator
 import { FetchEventsComponent } from './tools/fetch-events/fetch-events.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { DisplayCardComponent } from './tools/display-card/display-card.component'
+import { DisplayCardComponent } from './tools/display-card/display-card.component';
+import { LunchComponent } from './tools/lunch/lunch.component'
 
 
 const firebaseConfig = {
@@ -51,7 +52,8 @@ const firebaseConfig = {
     WeekDisplayComponent,
     ChedualCreatorComponent,
     FetchEventsComponent,
-    DisplayCardComponent
+    DisplayCardComponent,
+    LunchComponent
   ],
   imports: [
     BrowserModule,

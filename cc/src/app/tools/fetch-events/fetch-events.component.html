@@ -10,17 +10,28 @@
 
 <div class="displayTable">
   <div class="tableContent" *ngFor="let event of getDisplayedEvents()" (click)="toggleDetails(event)">
+    <div class="column">
     <h3>{{event.name}}</h3>
     <p>{{event.date}}</p>
     <div *ngIf="event.expanded">
       <p class="important">{{event.description}}</p>
       <p>{{event.time}} o'clock</p>
+      <div class="delEditButtons">
       <button class="editButton" (click)="editEvent(event)">Edit</button>
       <button class="deleteButton" (click)="deleteEvent(event)">
         <img src="../../../assets/bin.png" alt="Delete" style="width: 16px; height: 16px;">
       </button>
     </div>
+    </div>
   </div>
+    <div class="category-icon">
+      <img *ngIf="event.category === 'Fika'" src="../../../assets/fika.png" alt="Fika Icon">
+      <img *ngIf="event.category === 'Birthday'" src="../../../assets/images/birthday.svg" alt="Birthday Icon">
+      <img *ngIf="event.category === 'AV'" src="../../../assets/images/drink.svg" alt="AV Icon">
+      <img *ngIf="event.category === 'Trip'" src="../../../assets/images/trip.svg" alt="Trip Icon">
+    </div>
+</div>
+  
   <div class="pagination">
     <button  class="prevPage" (click)="prevPage()" [disabled]="currentPage === 0">Prev</button>
     <button  class="nextPage" (click)="nextPage()" [disabled]="currentPage === (sortedEvents.length / pageSize - 1)">Next</button>

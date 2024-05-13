@@ -1,24 +1,33 @@
 <form class="eventform" #createEventForm="ngForm" autocomplete="off">
     <div class="textInput">
-    <label for="name">Event name:</label>
-    <input type="text" id="name" name="name" ngModel>
+      <label for="name">Event name:</label>
+      <input type="text" id="name" name="name" ngModel>
     </div>
     <div class="textInput">
       <label for="description">Description:</label>
       <textarea id="description" name="description" ngModel></textarea>
     </div>
     <div class="date-time">
-        <div>
-            <label for="date">Date:</label>
-            <input type="date" id="date" name="date" ngModel>
-        </div>
-        <div>
-            <label for="time">Time:</label>
-            <input type="time" id="time" name="time" ngModel>
-        </div>
+      <div>
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" ngModel>
+      </div>
+      <div>
+        <label for="time">Time:</label>
+        <input type="time" id="time" name="time" ngModel>
+      </div>
+    </div>
+    <div class="textInput">
+      <label for="category">Category:</label>
+      <select id="category" name="category" ngModel>
+        <option value="Fika">Fika</option>
+        <option value="Birthday">Birthday</option>
+        <option value="AV">AV</option>
+        <option value="Trip">Trip</option>
+      </select>
     </div>
     <div>
-        <button (click)="submitForm()">Submit</button>
+      <button (click)="submitForm()">Submit</button>
     </div>
   </form>
   

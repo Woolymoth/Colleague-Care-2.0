@@ -132,5 +132,6 @@ export interface Events {
   description: string;
   date: string;
   time: string;
+  category: string;
   expanded?: boolean;
 }

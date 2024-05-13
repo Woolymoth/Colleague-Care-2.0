@@ -19,7 +19,7 @@ img{
     border-right: solid 3px gray;
 }
 .buttons{
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
@@ -39,10 +39,6 @@ button{
 button:hover{
     transition: 0.3s ease-in;
     border-color: white;
-    /*background-color: white;*/
-    /*border-top-left-radius: 10px;*/
-    /*border-top-right-radius: 10px;*/
-    /*border-radius: 10px;*/
     color:  whitesmoke;
 }
 .weekDisplay{

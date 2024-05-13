@@ -22,6 +22,9 @@ export class HeaderComponent implements OnInit {
   navigateToForm() {
     this.router.navigate(['/form']);
   }
+  navigateToDisplay() {
+    this.router.navigate(['/display']);
+  }
 
   navigateToLoginOrLogout() {
     if (this.isLoggedIn) {

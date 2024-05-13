@@ -1,0 +1,38 @@
+<div class="headCard">
+    <h2>Lunch Poll.</h2>
+  </div>
+<div class="displayTable">
+<div *ngIf="suggestions.length === 0; else suggestionsList">
+    <p>No suggestions yet.</p>
+  </div>
+  <div class="vote">
+    <ng-template #suggestionsList>
+        <div class="suggestions">
+            <div class="suggestion" *ngFor="let suggestion of suggestions">
+                <div class="suggestion-info">
+                    <input class="checkbox" type="checkbox" [(ngModel)]="suggestion.selected" 
+                        (change)="selectSuggestion(suggestion.id)"
+                        [disabled]="!canVote(suggestion)" [checked]="suggestion.voters.includes(authService.userEmail | async)">
+                    <span class="spacer">{{ suggestion.suggestion }}</span>
+                    <div class="percentage-bar">
+                        <div class="percentage-fill" [style.width.%]="getPercentage(suggestion.votes)"></div>
+                    </div>
+                    <span>{{ getPercentage(suggestion.votes) }}%</span>
+                </div>
+                <span>{{ suggestion.votes }}</span>
+            </div>
+        </div>
+        <div class="totalVotes">
+            Total Votes: {{ getTotalVotes() }}
+        </div>
+    </ng-template>
+    <button (click)="triggerVote()" [disabled]="!selectedSuggestionId || voted">Vote Now</button>
+</div>
+  <div class="input">
+  <input type="text" [(ngModel)]="suggestionText">
+  <button (click)="createSuggestion()" [disabled]="isLoading || voted">Submit</button>
+  
+  <!-- Display error message if any -->
+  <p *ngIf="errorMessage" style="color: red;">{{ errorMessage }}</p>
+    </div>
+  </div>

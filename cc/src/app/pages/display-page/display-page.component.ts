@@ -9,7 +9,8 @@ import { Renderer2 } from '@angular/core';
 export class DisplayPageComponent {
   constructor(private renderer: Renderer2) { }
   ngOnInit() {
-    this.renderer.setStyle(document.body, 'background', 'white');
+    this.renderer.setStyle(document.body, 'background', 'url(../../../assets/images/together.svg) no-repeat center center fixed');
+    this.renderer.setStyle(document.body, 'background-size', 'cover');
 
   }
   
