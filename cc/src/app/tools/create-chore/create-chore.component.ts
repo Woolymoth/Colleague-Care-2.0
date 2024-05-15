@@ -18,13 +18,15 @@ export class CreateChoreComponent {
       const acollection = collection(this.firestore,'chores');
       addDoc(acollection,{
         'chore_name' : this.choreForm.value.chore_name,
-        'description' : this.choreForm.value.description
+        'description' : this.choreForm.value.description,
+        'category' : this.choreForm.value.category,
       });
     }
     resetForm():void{
       this.choreForm.reset({
         'chore-name':'',
         'description':'',
+        'category': 'Cleaning',
       })
     }
     submitForm():void{

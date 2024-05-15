@@ -4,10 +4,17 @@
 
 <div class="displayTable">
   <div class="tableContent" *ngFor="let event of displayedSchedule" (click)="toggleDetails(event)">
+    <div class="column">
     <h3>{{event.chore.chore_name}}</h3>
     <p>{{event.colleague.first_name}} {{event.colleague.last_name}}</p>
     <div *ngIf="event.expanded">
       <p class="important">{{event.chore.description}}</p>
+    </div>
+    </div>
+    <div class="category-icon">
+      <img *ngIf="event.chore.category === 'Cleaning'" src="../../../assets/images/cleaning.svg" alt="Cleaning Icon">
+      <img *ngIf="event.chore.category === 'Maintain'" src="../../../assets/images/maintain.svg" alt="Maintain Icon">
+      <img *ngIf="event.chore.category === 'Delivery'" src="../../../assets/images/delivery.svg" alt="Delivery Icon">
     </div>
   </div>
   <div class="pagination">

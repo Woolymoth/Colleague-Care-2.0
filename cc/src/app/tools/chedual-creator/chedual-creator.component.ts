@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { collection, collectionData, addDoc, query, where, getDocs, Firestore } from '@angular/fire/firestore';
+import { collection, getDocs, query, where, Firestore, addDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-chedual-creator',

@@ -7,6 +7,14 @@
     <label for="description">Description:</label>
     <textarea id="description" name="description" ngModel></textarea>
   </div>
+  <div class="drop-down">
+    <label for="category">Category:</label>
+    <select id="category" name="category" ngModel>
+      <option value="Cleaning">Cleaning</option>
+      <option value="Delivery">Deliver</option>
+      <option value="Maintain">maintenance</option>
+    </select>
+  </div>
   <div>
       <button (click)="submitForm()">Submit</button>
   </div>

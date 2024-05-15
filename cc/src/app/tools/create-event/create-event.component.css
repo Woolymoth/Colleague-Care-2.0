@@ -8,6 +8,11 @@
     flex-direction: column;
     margin-top: 20px;
 }
+#category{
+    width: 410px;
+    border-radius: 5px;
+    border: solid 2px #E1E1E1;;
+}
 #name{
     width: 150px;
     border-radius: 20px;
