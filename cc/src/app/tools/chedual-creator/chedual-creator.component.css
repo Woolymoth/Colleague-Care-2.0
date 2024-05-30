@@ -133,5 +133,9 @@
     border-bottom-right-radius: 20px;
     border-top-right-radius: 20px;
   }
+  .category-icon img{
+    width: 70px;
+    height: 70px;
+  }
 }
 

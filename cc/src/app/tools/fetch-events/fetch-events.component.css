@@ -224,5 +224,8 @@ flex-direction: row;
     background-color: rgb(242, 255, 171);
   }
 
-
+  .category-icon img{
+    width: 70px;
+    height: 70px;
+  }
 }

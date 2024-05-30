@@ -23,7 +23,7 @@
 }
 @media (max-width: 767px) {
     .week-number-square{
-        width: 100;
+        width: 140px;
         height: 40px; 
         background-color: white; 
         display: flex;
@@ -38,8 +38,11 @@
         border-right: solid 3px gray;
         border-bottom: solid 3px gray;
     }
+    .week-number-square p{
+        font-size: small;
+    }
     .weekNo{
-        font-size: large;
+        font-size: medium;
         font-weight: 900;
         border-bottom: solid 1px;
     }
